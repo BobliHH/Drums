@@ -5,12 +5,31 @@
 // buttons.forEach(function(button) {
 //     button.addEventListener("click", handleClick)});
 
+//DETECTING BUTTON PRESS
 let buttons = document.querySelectorAll(".drum").length;
 
-function handleClick(){
+function handleClick(){ 
 
     let buttonInnerHTML =this.innerHTML;
-    switch (buttonInnerHTML) {
+    handleKey(buttonInnerHTML);}
+
+for(let i=0; i<buttons; i++){
+    document.querySelectorAll(".drum")[i].addEventListener("click",handleClick);
+}
+
+
+// DETECTING KEY PRESS
+document.addEventListener("keydown",function(event){
+    
+    console.log(event)
+    handleKey(event.key)
+    
+})
+
+function handleKey(key){
+
+   
+    switch (key) {
         case "w":
             let tom1 = new Audio(`./sounds/tom-1.mp3`);
             tom1.play();
@@ -49,18 +68,4 @@ function handleClick(){
     
         default: console.log("buttonInnerHTML")
             break;
-    }
-
-
-        
-        // this.style.color="white";
-        // let audio = new Audio(`./sounds/tom-1.mp3`);
-        // audio.play();
-    }
-
-for(let i=0; i<buttons; i++){
-    document.querySelectorAll(".drum")[i].addEventListener("click",handleClick);
-}
-
-
-// document.querySelector("").addEventListener("click",handleClick);
+    }}
