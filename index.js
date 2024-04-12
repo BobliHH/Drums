@@ -11,6 +11,7 @@ let buttons = document.querySelectorAll(".drum").length;
 function handleClick() {
   let buttonInnerHTML = this.innerHTML;
   handleKey(buttonInnerHTML);
+  buttonAnimation(buttonInnerHTML);
 }
 
 for (let i = 0; i < buttons; i++) {
@@ -19,8 +20,9 @@ for (let i = 0; i < buttons; i++) {
 
 // DETECTING KEY PRESS
 document.addEventListener("keydown", function (event) {
-  console.log(event);
+  // console.log(event);
   handleKey(event.key);
+  buttonAnimation(event.key);
 });
 
 function handleKey(key) {
@@ -64,4 +66,12 @@ function handleKey(key) {
       console.log("buttonInnerHTML");
       break;
   }
+}
+
+function buttonAnimation(currentKey) {
+  let activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function () {
+    activeButton.classList.remove("pressed");
+  }, 100);
 }
